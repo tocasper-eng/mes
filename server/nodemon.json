@@ -1,0 +1,5 @@
+{
+  "ignore": ["public/*"],
+  "watch": ["*.js", "controllers/", "routes/", "middleware/", "db/"],
+  "ext": "js"
+}
