@@ -1,7 +1,7 @@
 const { pool, poolConnect, sql } = require('../db/connection')
 
 const getCsla = async (req, res) => {
-  const { lstar, ltext, kokrs, kstty } = req.query
+  const { lstar, ltext } = req.query
 
   try {
     await poolConnect
@@ -17,22 +17,14 @@ const getCsla = async (req, res) => {
       request.input('ltext', sql.NVarChar, `%${ltext}%`)
       where.push('LTEXT LIKE @ltext')
     }
-    if (kokrs) {
-      request.input('kokrs', sql.NVarChar, kokrs)
-      where.push('KOKRS = @kokrs')
-    }
-    if (kstty) {
-      request.input('kstty', sql.NVarChar, kstty)
-      where.push('KSTTY = @kstty')
-    }
 
     const whereClause = where.length > 0 ? 'WHERE ' + where.join(' AND ') : ''
 
     const result = await request.query(`
-      SELECT MANDT, KOKRS, LSTAR, LTEXT, KSTTY, LEINH, VKSTA, LATYP
+      SELECT LSTAR, LTEXT, remark
       FROM mes_CSLA
       ${whereClause}
-      ORDER BY KOKRS, LSTAR
+      ORDER BY LSTAR
     `)
 
     res.json(result.recordset)
