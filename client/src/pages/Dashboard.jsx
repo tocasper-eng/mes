@@ -8,7 +8,7 @@ const menuItems = [
   {
     key: 'csla-query',
     icon: <SearchOutlined style={{ fontSize: 32, color: '#52c41a' }} />,
-    label: 'CSLA 查詢',
+    label: '作業類型查詢',
     path: '/csla-query',
   },
   {

@@ -76,7 +76,7 @@ export default function CslaQuery() {
           </Button>
         </div>
 
-        <Title level={4} style={{ marginBottom: 16 }}>CSLA Activity Type 查詢</Title>
+        <Title level={4} style={{ marginBottom: 16 }}>作業類型查詢</Title>
 
         <Card style={{ marginBottom: 16, borderRadius: 8 }}>
           <Row gutter={[16, 12]} align="bottom">
