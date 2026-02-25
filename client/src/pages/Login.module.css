@@ -1,0 +1,63 @@
+.container {
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: linear-gradient(135deg, #0f1923 0%, #1a2a4a 50%, #0f1923 100%);
+}
+
+.card {
+  background: #ffffff;
+  border-radius: 12px;
+  padding: 48px 40px 32px;
+  width: 380px;
+  box-shadow: 0 24px 64px rgba(0, 0, 0, 0.6);
+}
+
+.header {
+  text-align: center;
+  margin-bottom: 36px;
+}
+
+.icon {
+  font-size: 52px;
+  color: #1677ff;
+}
+
+.title {
+  margin: 14px 0 4px;
+  font-size: 26px;
+  font-weight: 700;
+  color: #0f1923;
+  letter-spacing: 2px;
+}
+
+.subtitle {
+  font-size: 13px;
+  color: #8c8c8c;
+  letter-spacing: 4px;
+}
+
+.inputIcon {
+  color: #bfbfbf;
+}
+
+.loginBtn {
+  height: 44px;
+  font-size: 16px;
+  letter-spacing: 8px;
+  margin-top: 8px;
+  background: linear-gradient(90deg, #1677ff, #0958d9);
+  border: none;
+}
+
+.loginBtn:hover {
+  background: linear-gradient(90deg, #0958d9, #003eb3) !important;
+}
+
+.footer {
+  text-align: center;
+  margin-top: 28px;
+  color: #d9d9d9;
+  font-size: 11px;
+}

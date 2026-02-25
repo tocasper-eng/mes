@@ -1,0 +1,18 @@
+table name:mes_CSLA    
+descript:activity  master data 
+fields 
+MANDT	MANDT	CLNT	3	0	Client
+KOKRS	KOKRS	CHAR	4	0	Controlling Area
+LSTAR	LSTAR	CHAR	6	0	Activity Type
+DATBI	DATBI	DATS	8	0	Valid To Date
+DATAB	DATAB	DATS	8	0	Valid-From Date
+LEINH	LEINH	UNIT	3	0	Activity Unit
+LATYP	LATYP	CHAR	1	0	Activity Type Category
+LATYPI	LATYPI	CHAR	1	0	Variant Activity Type Category for Actual Postings
+.INCLUDE	SI_CSLA	STRU	0	0	Activity Type Master Data
+ERSDA	ERFDT	DATS	8	0	Entered On
+USNAM	ERFNM	CHAR	12	0	Entered By
+KSTTY	KSTTY	CHAR	8	0	Valid Cost Center Categories
+AUSEH	AUSEH	UNIT	3	0	Output Unit
+AUSFK	AUSFK	DEC	5	2	Output factor
+VKSTA	VKSTA	CHAR	10	0	Allocation Cost Element
