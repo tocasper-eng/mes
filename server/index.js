@@ -7,7 +7,7 @@ const authRoutes = require('./routes/auth')
 const cslaRoutes = require('./routes/csla')
 
 const app = express()
-const PORT = process.env.WEB_PORT || process.env.PORT || 3000
+const PORT = process.env.PORT || 8080
 
 app.use(cors())
 app.use(express.json())
@@ -15,8 +15,14 @@ app.use(express.json())
 // 提供靜態文件
 app.use(express.static(path.join(__dirname, 'public')))
 
+// API 路由
 app.use('/api/auth', authRoutes)
 app.use('/api/csla', cslaRoutes)
+
+// 健康檢查端點
+app.get('/health', (req, res) => {
+  res.json({ status: 'ok' })
+})
 
 // 處理 SPA 路由
 app.get('*', (req, res) => {
