@@ -1,6 +1,6 @@
 const bcrypt = require('bcryptjs')
 const jwt = require('jsonwebtoken')
-const { pool, poolConnect, sql } = require('../db/connection')
+const { pool: poolPromise, sql } = require('../db/connection')
 
 const login = async (req, res) => {
   const { username, password } = req.body
@@ -10,7 +10,9 @@ const login = async (req, res) => {
   }
 
   try {
-    await poolConnect
+    const pool = await poolPromise
+    if (!pool) return res.status(500).json({ message: '資料庫連線失敗，請稍後再試' })
+
     const request = pool.request()
     request.input('username', sql.NVarChar, username)
 
@@ -70,7 +72,9 @@ const changePassword = async (req, res) => {
   }
 
   try {
-    await poolConnect
+    const pool = await poolPromise
+    if (!pool) return res.status(500).json({ message: '資料庫連線失敗，請稍後再試' })
+
     const request = pool.request()
     request.input('id', sql.Int, userId)
     const result = await request.query(

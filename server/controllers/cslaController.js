@@ -1,12 +1,13 @@
-const { pool, poolConnect, sql } = require('../db/connection')
+const { pool: poolPromise, sql } = require('../db/connection')
 
 const getCsla = async (req, res) => {
   const { lstar, ltext } = req.query
 
   try {
-    await poolConnect
-    const request = pool.request()
+    const pool = await poolPromise
+    if (!pool) return res.status(500).json({ message: '資料庫連線失敗，請稍後再試' })
 
+    const request = pool.request()
     let where = []
 
     if (lstar) {

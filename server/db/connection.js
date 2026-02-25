@@ -16,27 +16,26 @@ const config = {
 }
 
 let pool = null
-let poolConnect = null
 
-const getPool = async () => {
-  if (!pool) {
+const initializePool = async () => {
+  try {
     pool = new sql.ConnectionPool(config)
-    try {
-      poolConnect = await pool.connect()
-      console.log('Database connected successfully')
-    } catch (err) {
-      console.error('Database connection error:', err.message)
-      pool = null
-      poolConnect = null
-      throw err
-    }
+    await pool.connect()
+    console.log('[DB] Database connected successfully')
+    return pool
+  } catch (err) {
+    console.error('[DB] Connection error:', err.message)
+    pool = null
+    // 不拋出錯誤，讓應用繼續運行
+    return null
   }
-  return pool
 }
 
-pool = new sql.ConnectionPool(config)
-poolConnect = pool.connect().catch(err => {
-  console.error('Initial database connection failed:', err.message)
-})
+// 異步初始化連接池
+const poolPromise = initializePool()
 
-module.exports = { pool, poolConnect, sql, getPool }
+module.exports = {
+  pool: poolPromise,
+  sql,
+  initializePool,
+}
